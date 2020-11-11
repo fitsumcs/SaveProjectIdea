@@ -6,4 +6,21 @@
     android:layout_height="match_parent"
     tools:context=".HomePage">
 
+    <fragment
+        android:id="@+id/fragment"
+        android:name="androidx.navigation.fragment.NavHostFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:defaultNavHost="true"
+        app:navGraph="@navigation/my_nav" />
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottem_NavigationView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:layout_editor_absoluteX="146dp"
+        android:padding="12dp"
+        app:menu="@menu/bottom_menu"
+        />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/my_nav"
+    app:startDestination="@id/view_Ideas">
+
+    <fragment
+        android:id="@+id/view_Ideas"
+        android:name="com.example.saveprojectidea.View_Ideas"
+        android:label="fragment_view__ideas"
+        tools:layout="@layout/fragment_view__ideas" />
+
+    <fragment
+        android:id="@+id/add_Idea"
+        android:name="com.example.saveprojectidea.Add_Idea"
+        android:label="fragment_add__idea"
+        tools:layout="@layout/fragment_add__idea" />
+    <fragment
+        android:id="@+id/user_Setting"
+        android:name="com.example.saveprojectidea.User_Setting"
+        android:label="fragment_user__setting"
+        tools:layout="@layout/fragment_user__setting" />
+</navigation>
