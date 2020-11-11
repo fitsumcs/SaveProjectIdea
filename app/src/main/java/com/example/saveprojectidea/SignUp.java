@@ -7,6 +7,7 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 public class SignUp extends AppCompatActivity {
 
@@ -37,9 +38,15 @@ public class SignUp extends AppCompatActivity {
 
         if(TextUtils.isEmpty(Uname) || TextUtils.isEmpty(Uemail) || TextUtils.isEmpty(Upassword))
         {
-
+            Toast.makeText(this,"Please Fill All Fields!!",Toast.LENGTH_SHORT).show();
+        }
+        else {
+            registerUser(Uname,Uemail,Upassword);
         }
 
 
+    }
+
+    private void registerUser(String uname, String uemail, String upassword) {
     }
 }
