@@ -15,6 +15,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="20dp"
+        android:layout_marginLeft="12dp"
+        android:layout_marginRight="12dp"
         android:hint="Name"
         android:ems="10"
         android:inputType="textPersonName"
@@ -24,6 +26,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="20dp"
+        android:layout_marginLeft="12dp"
+        android:layout_marginRight="12dp"
         android:hint="Email"
         android:ems="10"
         android:inputType="textPersonName"
@@ -33,6 +37,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="20dp"
+        android:layout_marginLeft="12dp"
+        android:layout_marginRight="12dp"
         android:hint="Password"
         android:ems="10"
         android:inputType="textPassword" />
@@ -43,6 +49,9 @@
         android:id="@+id/button_signUp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="12dp"
+        android:layout_marginRight="12dp"
+        android:textSize="20dp"
         android:onClick="actionSignUp"
         android:text="Sign Up" />
 
