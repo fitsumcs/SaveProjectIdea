@@ -88,7 +88,7 @@ public class SignUp extends AppCompatActivity {
 
                 }
                 else{
-                    Toast.makeText(SignUp.this,"Some thing get Wrong Try again",Toast.LENGTH_LONG).show();
+                    Toast.makeText(SignUp.this,"Some thing get Wrong Try again",Toast.LENGTH_SHORT).show();
                 }
             }
         });
