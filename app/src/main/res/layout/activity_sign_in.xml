@@ -9,7 +9,14 @@
     tools:context=".SignIn"
     tools:layout_editor_absoluteY="81dp">
 
-
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="70dp"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:text="Sign In" />
 
     <EditText
         android:id="@+id/editText_Email"
