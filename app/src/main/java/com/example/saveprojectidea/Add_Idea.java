@@ -17,6 +17,7 @@ import androidx.fragment.app.Fragment;
 public class Add_Idea extends Fragment {
 
     EditText title,description;
+    String Utitle , Udescription;
 
 
     public Add_Idea() {
@@ -52,8 +53,8 @@ public class Add_Idea extends Fragment {
             @Override
             public void onClick(View view) {
 
-                String Utitle = title.getText().toString();
-                String Udescription = description.getText().toString();
+                Utitle = title.getText().toString();
+                Udescription = description.getText().toString();
                 Toast.makeText(getContext(),Utitle + " : " + Udescription,Toast.LENGTH_LONG).show();
 
             }
