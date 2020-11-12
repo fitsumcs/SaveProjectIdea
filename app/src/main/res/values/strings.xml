@@ -17,4 +17,7 @@
     <string name="description">Description</string>
     <string name="save_project_idea">Save Project Idea</string>
     <string name="project_title">Project Title</string>
+    <string name="profile">Profile</string>
+    <string name="add_idea">Add Idea</string>
+    <string name="home">Home</string>
 </resources>
