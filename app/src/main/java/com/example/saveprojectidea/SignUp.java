@@ -57,7 +57,7 @@ public class SignUp extends AppCompatActivity {
         }
         else if(Upassword.length() < 6)
         {
-            Toast.makeText(this,"Password Lengeth Must be Greater than 6!!",Toast.LENGTH_SHORT).show();
+            Toast.makeText(this,"Password Length Must be Greater than 6!!",Toast.LENGTH_SHORT).show();
         }
         else {
             registerUser(Uname,Uemail,Upassword);
@@ -79,7 +79,7 @@ public class SignUp extends AppCompatActivity {
 
                 if(task.isSuccessful())
                 {
-                    Toast.makeText(SignUp.this,"Successfully Regesterd!!",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(SignUp.this,"Successfully Registered!!",Toast.LENGTH_SHORT).show();
                     name.setText("");
                     email.setText("");
                     password.setText("");
@@ -88,7 +88,7 @@ public class SignUp extends AppCompatActivity {
 
                 }
                 else{
-                    Toast.makeText(SignUp.this,"Some thing get Wrong Try again",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(SignUp.this,"Some thing went Wrong Try again",Toast.LENGTH_SHORT).show();
                 }
             }
         });

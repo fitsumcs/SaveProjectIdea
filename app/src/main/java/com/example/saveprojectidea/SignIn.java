@@ -57,7 +57,7 @@ public class SignIn extends AppCompatActivity {
         }
         else if(Upassword.length() < 6)
         {
-            Toast.makeText(this,"Password Lengeth Must be Greater than 6!!",Toast.LENGTH_SHORT).show();
+            Toast.makeText(this,"Password Length Must be Greater than 6!!",Toast.LENGTH_SHORT).show();
         }
         else {
             loginUser(Uemail,Upassword);
@@ -82,7 +82,7 @@ public class SignIn extends AppCompatActivity {
 
                 }
                 else{
-                    Toast.makeText(SignIn.this,"Some thing get Wrong Try again",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(SignIn.this,"Some thing went Wrong Try again",Toast.LENGTH_SHORT).show();
                 }
             }
         });
