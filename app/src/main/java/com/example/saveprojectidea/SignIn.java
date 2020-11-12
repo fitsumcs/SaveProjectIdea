@@ -21,7 +21,7 @@ public class SignIn extends AppCompatActivity {
 
 
     TextInputEditText email,password;
-    TextView editText_signup;
+    TextView editText_signup, getEditText_resetPassword;
     ProgressDialog progressDialog;
 
     FirebaseAuth firebaseAuth;
@@ -37,16 +37,14 @@ public class SignIn extends AppCompatActivity {
         firebaseAuth = FirebaseAuth.getInstance();
 
         editText_signup = (TextView) findViewById(R.id.tv_gotoSignUp);
+        getEditText_resetPassword = (TextView) findViewById(R.id.tv_forgotPassword);
 
 
 
     }
 
 
-    public void goToSignUp(View view) {
-        Intent intent = new Intent(SignIn.this,SignUp.class);
-        startActivity(intent);
-    }
+
 
     public void actionSignIn(View view) {
         String Uemail = email.getText().toString().trim();
@@ -88,5 +86,15 @@ public class SignIn extends AppCompatActivity {
             }
         });
 
+    }
+
+    public void goToSignUp(View view) {
+        Intent intent = new Intent(SignIn.this,SignUp.class);
+        startActivity(intent);
+    }
+
+    public void goToResetPassword(View view) {
+        Intent intent = new Intent(SignIn.this,ResetPassword.class);
+        startActivity(intent);
     }
 }

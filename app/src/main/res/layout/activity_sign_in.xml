@@ -14,8 +14,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="70dp"
         android:gravity="center"
-        android:text="Sign In"
-        android:textSize="20dp"
+        android:text="@string/sign_in"
+        android:textSize="20sp"
         android:textStyle="bold" />
 
     <com.google.android.material.textfield.TextInputLayout
@@ -31,7 +31,7 @@
             android:layout_marginRight="12dp"
             android:layout_marginBottom="20dp"
             android:background="#FFFFFF"
-            android:hint="Email"
+            android:hint="@string/email"
             android:inputType="textEmailAddress" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -50,7 +50,7 @@
             android:layout_marginRight="12dp"
             android:layout_marginBottom="20dp"
             android:background="#FFFFFF"
-            android:hint="Password"
+            android:hint="@string/password"
             android:inputType="textPassword" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -61,18 +61,32 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="12dp"
         android:layout_marginRight="12dp"
-        android:textSize="20dp"
+        android:textSize="20sp"
         android:onClick="actionSignIn"
-        android:text="Sign In" />
+        android:text="@string/sign_in" />
+
+    <TextView
+        android:id="@+id/tv_forgotPassword"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:gravity="right"
+        android:layout_marginRight="12dp"
+        android:onClick="goToResetPassword"
+        android:text="@string/forgot_password"
+        android:textColor="#2196F3"
+        android:textSize="20sp"
+        android:layout_marginEnd="12dp" />
 
     <TextView
         android:id="@+id/tv_gotoSignUp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:onClick="goToSignUp"
-        android:layout_marginTop="40dp"
-        android:textSize="20dp"
+        android:layout_marginTop="30dp"
         android:gravity="center"
-        android:text="You have no account ? SignUp" />
+        android:onClick="goToSignUp"
+        android:text="@string/no_account"
+        android:textColor="#BD4444"
+        android:textSize="20sp" />
 
 </LinearLayout>

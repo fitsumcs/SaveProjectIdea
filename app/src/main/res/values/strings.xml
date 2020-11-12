@@ -1,5 +1,17 @@
 <resources>
-    <string name="app_name">SaveProjectIdea</string>
+    <string name="app_name">Project Ideas</string>
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="password">Password</string>
+    <string name="sign_in">Sign In</string>
+    <string name="forgot_password">Forgot Password ?</string>
+    <string name="reset_password">Reset Password </string>
+    <string name="no_account">You have no account ? SignUp</string>
+    <string name="email">Email</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="name">Name</string>
+    <string name="welcome">Welcome To Project Ideas Storage System</string>
+    <string name="add_idea">Add Idea</string>
+    <string name="logout">Logout</string>
+    <string name="user_setting">User Setting</string>
+    <string name="view_ideas">View Ideas</string>
 </resources>
