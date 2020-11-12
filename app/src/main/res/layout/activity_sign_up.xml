@@ -18,41 +18,58 @@
         android:textSize="20dp"
         android:textStyle="bold" />
 
-    <EditText
-        android:id="@+id/editText_Name"
+    <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
-        android:layout_marginLeft="12dp"
-        android:layout_marginRight="12dp"
-        android:hint="Name"
-        android:ems="10"
-        android:inputType="textPersonName"
-        />
-    <EditText
-        android:id="@+id/editTextText_Email"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
-        android:layout_marginLeft="12dp"
-        android:layout_marginRight="12dp"
-        android:hint="Email"
-        android:ems="10"
-        android:inputType="textEmailAddress"
-        />
-    <EditText
-        android:id="@+id/editTextText_Password"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
-        android:layout_marginLeft="12dp"
-        android:layout_marginRight="12dp"
-        android:hint="Password"
-        android:ems="10"
-        android:inputType="textPassword"
+        android:layout_height="wrap_content">
 
-        />
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editText_Name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="12dp"
+            android:layout_marginRight="12dp"
+            android:layout_marginBottom="20dp"
+            android:layout_marginTop="20dp"
+            android:background="#FFFFFF"
+            android:hapticFeedbackEnabled="true"
+            android:hint="Name" />
+    </com.google.android.material.textfield.TextInputLayout>
 
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editTextText_Email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="12dp"
+            android:layout_marginRight="12dp"
+            android:layout_marginBottom="20dp"
+            android:layout_marginTop="20dp"
+            android:background="#FFFFFF"
+            android:hapticFeedbackEnabled="true"
+            android:hint="Email"
+            android:inputType="textEmailAddress"
+            />
+    </com.google.android.material.textfield.TextInputLayout>
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:passwordToggleEnabled="true"
+        >
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editTextText_Password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="12dp"
+            android:layout_marginRight="12dp"
+            android:layout_marginBottom="20dp"
+            android:background="#FFFFFF"
+            android:hint="Password"
+            android:inputType="textPassword" />
+    </com.google.android.material.textfield.TextInputLayout>
 
 
     <Button

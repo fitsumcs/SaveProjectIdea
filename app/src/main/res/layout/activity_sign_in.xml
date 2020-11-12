@@ -13,22 +13,27 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="70dp"
-        android:textSize="20dp"
-        android:textStyle="bold"
         android:gravity="center"
-        android:text="Sign In" />
+        android:text="Sign In"
+        android:textSize="20dp"
+        android:textStyle="bold" />
 
-    <EditText
-        android:id="@+id/editText_Email"
+    <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
-        android:layout_marginLeft="12dp"
-        android:layout_marginRight="12dp"
-        android:hint="Email"
-        android:ems="10"
-        android:inputType="textEmailAddress"
-        />
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editText_Email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="12dp"
+            android:layout_marginRight="12dp"
+            android:layout_marginBottom="20dp"
+            android:background="#FFFFFF"
+            android:hint="Email"
+            android:inputType="textEmailAddress" />
+    </com.google.android.material.textfield.TextInputLayout>
 
 
     <com.google.android.material.textfield.TextInputLayout

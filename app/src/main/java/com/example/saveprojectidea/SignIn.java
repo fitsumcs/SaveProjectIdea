@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -20,8 +19,8 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class SignIn extends AppCompatActivity {
 
-    EditText email;
-    TextInputEditText password;
+
+    TextInputEditText email,password;
     TextView editText_signup;
     ProgressDialog progressDialog;
 
@@ -31,7 +30,7 @@ public class SignIn extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_in);
 
-        email = (EditText) findViewById(R.id.editText_Email);
+        email = (TextInputEditText) findViewById(R.id.editText_Email);
         password = (TextInputEditText)findViewById(R.id.editText_Password);
         progressDialog = new ProgressDialog(this);
 
