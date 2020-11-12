@@ -41,7 +41,7 @@
             />
 
         <Button
-            android:id="@+id/button2"
+            android:id="@+id/button_addIdea"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="12dp"
