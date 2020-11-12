@@ -14,4 +14,7 @@
     <string name="logout">Logout</string>
     <string name="user_setting">User Setting</string>
     <string name="view_ideas">View Ideas</string>
+    <string name="description">Description</string>
+    <string name="save_project_idea">Save Project Idea</string>
+    <string name="project_title">Project Title</string>
 </resources>
