@@ -31,6 +31,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.542" />
+        app:layout_constraintVertical_bias="0.542"
+        style="@style/Widget.MaterialComponents.Button.TextButton"
+        />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
