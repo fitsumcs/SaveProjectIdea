@@ -16,6 +16,9 @@ import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class SignUp extends AppCompatActivity {
 
@@ -25,6 +28,8 @@ public class SignUp extends AppCompatActivity {
     ProgressDialog progressDialog;
 
     FirebaseAuth firebaseAuth;
+
+    DatabaseReference usersDatabase;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +42,8 @@ public class SignUp extends AppCompatActivity {
         progressDialog = new ProgressDialog(this);
 
         firebaseAuth = FirebaseAuth.getInstance();
+
+        usersDatabase = FirebaseDatabase.getInstance().getReference("Users");
 
 
 
@@ -79,12 +86,33 @@ public class SignUp extends AppCompatActivity {
 
                 if(task.isSuccessful())
                 {
-                    Toast.makeText(SignUp.this,"Successfully Registered!!",Toast.LENGTH_SHORT).show();
-                    name.setText("");
-                    email.setText("");
-                    password.setText("");
-                    Intent intent = new Intent(SignUp.this,SignIn.class);
-                    startActivity(intent);
+
+                    //get user
+                    FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
+                    String userId = firebaseUser.getUid();
+
+                     User user  = new User(uname,uemail,"1212112");
+
+                    //add data
+                    usersDatabase.child(userId).setValue(user).addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task) {
+                            if(task.isSuccessful())
+                            {
+                                Toast.makeText(SignUp.this,"Successfully Registered!!",Toast.LENGTH_SHORT).show();
+                                name.setText("");
+                                email.setText("");
+                                password.setText("");
+                                Intent intent = new Intent(SignUp.this,SignIn.class);
+                                startActivity(intent);
+                            }
+                            else{
+                                Toast.makeText(SignUp.this,"Some thing went Wrong Try again",Toast.LENGTH_SHORT).show();
+                            }
+
+
+                        }
+                    });
 
                 }
                 else{
