@@ -49,6 +49,7 @@ public class User_Setting extends Fragment {
                 FirebaseAuth.getInstance().signOut();
                 Intent intent = new Intent(getActivity(),SignIn.class);
                 startActivity(intent);
+                getActivity().finish();
 
             }
         });
