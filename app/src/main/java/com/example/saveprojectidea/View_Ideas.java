@@ -7,10 +7,29 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
 
 
 public class View_Ideas extends Fragment {
+
+
+
+    ArrayList<ProjectIdeas> project_Ideas = new ArrayList<>();
+    FirebaseAuth firebaseAuth;
+    DatabaseReference projectDatabase;
+
+
 
 
 
@@ -34,6 +53,17 @@ public class View_Ideas extends Fragment {
     }
 
     @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        firebaseAuth = FirebaseAuth.getInstance();
+        projectDatabase = FirebaseDatabase.getInstance().getReference("Projects");
+
+
+
+    }
+
+    @Override
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
     }
@@ -42,4 +72,43 @@ public class View_Ideas extends Fragment {
     public void onDetach() {
         super.onDetach();
     }
+
+    public void readAllProjectIdeas()
+    {
+
+        //get user
+        FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
+        String userId = firebaseUser.getUid();
+
+        project_Ideas.clear();;
+
+        projectDatabase.child(userId).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                for (DataSnapshot snapshot :dataSnapshot.getChildren()) {
+
+                    ProjectIdeas projectIdeasModel = snapshot.getValue(ProjectIdeas.class);
+
+                    project_Ideas.add(projectIdeasModel);
+
+
+
+                }
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+
+
+
+    }
+
+
+
 }
