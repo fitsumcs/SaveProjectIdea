@@ -116,7 +116,8 @@ public class SignUp extends AppCompatActivity {
 
                 }
                 else{
-                    Toast.makeText(SignUp.this,"Some thing went Wrong Try again",Toast.LENGTH_SHORT).show();
+                    String errMesg = task.getException().getMessage();
+                    Toast.makeText(SignUp.this,errMesg,Toast.LENGTH_SHORT).show();
                 }
             }
         });

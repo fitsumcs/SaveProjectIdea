@@ -77,7 +77,7 @@ public class Add_Idea extends Fragment {
                 Utitle = title.getText().toString();
                 Udescription = description.getText().toString();
 
-                SimpleDateFormat simpleDateFormat = new SimpleDateFormat("\"EEE, dd MMM yyyy\"");
+                SimpleDateFormat simpleDateFormat = new SimpleDateFormat("EEE, dd MMM yyyy");
                 Calendar calendar = Calendar.getInstance();
                 String today = simpleDateFormat.format(calendar.getTime());
 

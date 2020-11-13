@@ -19,4 +19,6 @@
     <string name="profile">Profile</string>
     <string name="add_idea">Add Idea</string>
     <string name="home">Home</string>
+    <string name="title">Title</string>
+    <string name="date">Date</string>
 </resources>

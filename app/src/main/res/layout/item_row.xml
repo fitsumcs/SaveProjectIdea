@@ -27,10 +27,12 @@
             style="@style/Widget.AppCompat.TextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Title"
+            android:capitalize="characters"
+            android:text="@string/title"
+            android:textAllCaps="false"
             android:textColor="#0C0C0C"
             android:textSize="15sp"
-            android:textStyle="normal" />
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/textView_Description"
@@ -38,7 +40,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
-            android:text="Description"
+            android:text="@string/description"
             android:textColor="#0C0C0C"
             android:textSize="12sp"
             android:textStyle="normal" />
@@ -56,9 +58,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:textColor="#0C0C0C"
+            android:text="@string/date"
+            android:textColor="#9C27B0"
             android:textSize="12sp"
-            android:text="Date" />
+            android:textStyle="italic" />
 
         <ImageView
             android:id="@+id/image_edit"
