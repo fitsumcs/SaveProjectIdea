@@ -1,5 +1,6 @@
 package com.example.saveprojectidea;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -27,6 +28,7 @@ public class View_Ideas extends Fragment {
 
 
 
+    ProgressDialog progressDialog;
     ArrayList<ProjectIdeas> project_Ideas = new ArrayList<>();
     FirebaseAuth firebaseAuth;
     DatabaseReference projectDatabase;
@@ -60,6 +62,8 @@ public class View_Ideas extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        progressDialog = new ProgressDialog(getContext());
+
         firebaseAuth = FirebaseAuth.getInstance();
         projectDatabase = FirebaseDatabase.getInstance().getReference("Projects");
 
@@ -88,15 +92,20 @@ public class View_Ideas extends Fragment {
     public void readAllProjectIdeas()
     {
 
+        progressDialog.setMessage("Loading Data ...");
+        progressDialog.show();
+
         //get user
         FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
         String userId = firebaseUser.getUid();
 
         project_Ideas.clear();;
 
-        projectDatabase.child(userId).addListenerForSingleValueEvent(new ValueEventListener() {
+        projectDatabase.child(userId).orderByChild("projectDate").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                progressDialog.dismiss();
 
                 for (DataSnapshot snapshot :dataSnapshot.getChildren()) {
 
