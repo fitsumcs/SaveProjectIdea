@@ -9,6 +9,8 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -28,6 +30,8 @@ public class View_Ideas extends Fragment {
     ArrayList<ProjectIdeas> project_Ideas = new ArrayList<>();
     FirebaseAuth firebaseAuth;
     DatabaseReference projectDatabase;
+
+    RecyclerView  rvProjectList ;
 
 
 
@@ -58,6 +62,14 @@ public class View_Ideas extends Fragment {
 
         firebaseAuth = FirebaseAuth.getInstance();
         projectDatabase = FirebaseDatabase.getInstance().getReference("Projects");
+
+        rvProjectList = (RecyclerView) view.findViewById(R.id.rvProjectIdeasList);
+
+        rvProjectList.setLayoutManager(new LinearLayoutManager(getContext()));
+
+
+        //call
+        readAllProjectIdeas();
 
 
 
@@ -92,9 +104,13 @@ public class View_Ideas extends Fragment {
 
                     project_Ideas.add(projectIdeasModel);
 
-
-
                 }
+
+                RecycleAdapter recycleAdapter =  new RecycleAdapter(getContext(),project_Ideas);
+
+                rvProjectList.setAdapter(recycleAdapter);
+
+
 
             }
 
