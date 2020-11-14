@@ -7,7 +7,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -15,8 +14,6 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -29,7 +26,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 
-public class View_Ideas extends Fragment  implements ManageUpdate {
+public class View_Ideas extends Fragment   {
 
 
 
@@ -41,6 +38,8 @@ public class View_Ideas extends Fragment  implements ManageUpdate {
     RecyclerView  rvProjectList ;
 
     TextView emptyView;
+
+
 
 
 
@@ -92,7 +91,9 @@ public class View_Ideas extends Fragment  implements ManageUpdate {
 
     @Override
     public void onAttach(@NonNull Context context) {
+
         super.onAttach(context);
+
     }
 
     @Override
@@ -127,7 +128,7 @@ public class View_Ideas extends Fragment  implements ManageUpdate {
 
                 }
 
-                RecycleAdapter recycleAdapter =  new RecycleAdapter(getActivity(),project_Ideas);
+                RecycleAdapter recycleAdapter =  new RecycleAdapter(getContext(),project_Ideas);
 
                 recycleAdapter.notifyDataSetChanged();
 
@@ -156,20 +157,4 @@ public class View_Ideas extends Fragment  implements ManageUpdate {
     }
 
 
-    @Override
-    public void updateProjectIdea(ProjectIdeas projectIdeas) {
-
-        projectDatabase.child(projectIdeas.getProjectId()).setValue(projectIdeas).addOnCompleteListener(new OnCompleteListener<Void>() {
-            @Override
-            public void onComplete(@NonNull Task<Void> task) {
-
-                if(task.isSuccessful())
-                {
-                    Toast.makeText(getContext(),"Successfully Updated!!!",Toast.LENGTH_SHORT).show();
-                }
-
-            }
-        });
-
-    }
 }

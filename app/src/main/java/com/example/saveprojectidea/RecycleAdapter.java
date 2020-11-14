@@ -16,6 +16,13 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -26,20 +33,24 @@ public class RecycleAdapter  extends RecyclerView.Adapter<RecycleAdapter.Project
     ArrayList<ProjectIdeas> projectIdeas;
 
     String projectId  , newdate;
-    ManageUpdate manageUpdate;
+    String userId;
+    FirebaseUser firebaseUser;
 
+    DatabaseReference projectDatabase;
+    FirebaseAuth firebaseAuth;
 
     public RecycleAdapter(Context con, ArrayList<ProjectIdeas> projectIdeas)
     {
 
         this.context = con;
         this.projectIdeas = projectIdeas;
-        manageUpdate = new ManageUpdate() {
-            @Override
-            public void updateProjectIdea(ProjectIdeas projectIdeas) {
+        projectDatabase = FirebaseDatabase.getInstance().getReference("Projects");
+        firebaseAuth = FirebaseAuth.getInstance();
+        //get user
+        firebaseUser = firebaseAuth.getCurrentUser();
+        userId = firebaseUser.getUid();
 
-            }
-        };
+
 
 
     }
@@ -75,6 +86,20 @@ public class RecycleAdapter  extends RecyclerView.Adapter<RecycleAdapter.Project
 
             }
         });
+
+        holder.im_delete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                displayDeleteDialog();
+            }
+        });
+    }
+
+    private void displayDeleteDialog() {
+        Dialog dialog = new Dialog(context);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setContentView(R.layout.delete_dialog_layout);
+        dialog.show();
     }
 
     private void displayEditDialog(ProjectIdeas projectIdeasItem) {
@@ -116,10 +141,20 @@ public class RecycleAdapter  extends RecyclerView.Adapter<RecycleAdapter.Project
 
                 ProjectIdeas updatedIdea = new ProjectIdeas(updatedTitle,updatedDesc,newdate,projectId);
 
-                manageUpdate.updateProjectIdea(updatedIdea);
+                projectDatabase.child(userId).child(updatedIdea.getProjectId()).setValue(updatedIdea).addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+
+                        if(task.isSuccessful())
+                        {
+                            Toast.makeText(context,"Successfully Updated!!!",Toast.LENGTH_SHORT).show();
+                        }
+
+                    }
+                });
+
+
                 dialog.dismiss();
-
-
 
 
 
