@@ -26,12 +26,20 @@ public class RecycleAdapter  extends RecyclerView.Adapter<RecycleAdapter.Project
     ArrayList<ProjectIdeas> projectIdeas;
 
     String projectId  , newdate;
+    ManageUpdate manageUpdate;
 
-    public RecycleAdapter(Context context, ArrayList<ProjectIdeas> projectIdeas)
+
+    public RecycleAdapter(Context con, ArrayList<ProjectIdeas> projectIdeas)
     {
 
-        this.context = context;
+        this.context = con;
         this.projectIdeas = projectIdeas;
+        manageUpdate = new ManageUpdate() {
+            @Override
+            public void updateProjectIdea(ProjectIdeas projectIdeas) {
+
+            }
+        };
 
 
     }
@@ -94,7 +102,7 @@ public class RecycleAdapter  extends RecyclerView.Adapter<RecycleAdapter.Project
                 SimpleDateFormat simpleDateFormat = new SimpleDateFormat("EEE, dd MMM yyyy");
                 Calendar calendar = Calendar.getInstance();
                 newdate = simpleDateFormat.format(calendar.getTime());
-                dialog.dismiss();
+
 
                 //new Data
                 if(TextUtils.isEmpty(editTitle.getText()) || TextUtils.isEmpty((editDescription.getText())))
@@ -106,18 +114,18 @@ public class RecycleAdapter  extends RecyclerView.Adapter<RecycleAdapter.Project
                 String updatedTitle = editTitle.getText().toString();
                 String updatedDesc = editDescription.getText().toString();
 
+                ProjectIdeas updatedIdea = new ProjectIdeas(updatedTitle,updatedDesc,newdate,projectId);
+
+                manageUpdate.updateProjectIdea(updatedIdea);
+                dialog.dismiss();
+
+
+
 
 
 
             }
         });
-
-
-
-
-
-
-
 
 
 
