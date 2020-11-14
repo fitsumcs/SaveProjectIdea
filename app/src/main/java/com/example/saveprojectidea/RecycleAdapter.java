@@ -2,22 +2,30 @@ package com.example.saveprojectidea;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 
 public class RecycleAdapter  extends RecyclerView.Adapter<RecycleAdapter.ProjectIdeaHandler> {
 
     Context context;
     ArrayList<ProjectIdeas> projectIdeas;
+
+    String projectId  , newdate;
 
     public RecycleAdapter(Context context, ArrayList<ProjectIdeas> projectIdeas)
     {
@@ -55,18 +63,59 @@ public class RecycleAdapter  extends RecyclerView.Adapter<RecycleAdapter.Project
             @Override
             public void onClick(View view) {
 
-                displayEditDialog();
+                displayEditDialog(ideaOfProject);
 
             }
         });
     }
 
-    private void displayEditDialog() {
+    private void displayEditDialog(ProjectIdeas projectIdeasItem) {
+
+
 
         Dialog dialog = new Dialog(context);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialog.setContentView(R.layout.edit_dialog_layout);
         dialog.show();
+
+        EditText editTitle = (EditText)dialog.findViewById(R.id.editTextUpdateTitle);
+        EditText editDescription = (EditText)dialog.findViewById(R.id.editTextUpdateDescription);
+
+        editTitle.setText(projectIdeasItem.getProjectTitle());
+        editDescription.setText(projectIdeasItem.getProjectDescription());
+
+        projectId = projectIdeasItem.getProjectId();
+
+        Button updateButton = (Button) dialog.findViewById(R.id.button_updateIdea);
+
+        updateButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                SimpleDateFormat simpleDateFormat = new SimpleDateFormat("EEE, dd MMM yyyy");
+                Calendar calendar = Calendar.getInstance();
+                newdate = simpleDateFormat.format(calendar.getTime());
+                dialog.dismiss();
+
+                //new Data
+                if(TextUtils.isEmpty(editTitle.getText()) || TextUtils.isEmpty((editDescription.getText())))
+                {
+                    Toast.makeText(context,"Please Fill All Fields",Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                //get new data
+                String updatedTitle = editTitle.getText().toString();
+                String updatedDesc = editDescription.getText().toString();
+
+
+
+
+            }
+        });
+
+
+
+
+
 
 
 
