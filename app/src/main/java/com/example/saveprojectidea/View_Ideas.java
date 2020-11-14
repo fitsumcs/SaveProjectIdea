@@ -78,8 +78,20 @@ public class View_Ideas extends Fragment   {
         rvProjectList.setLayoutManager(new LinearLayoutManager(getContext()));
 
 
-        //call
-        readAllProjectIdeas();
+                if((new ChekNetwork().isNetworkAvailable(getContext())))
+                {
+                    //call
+                    readAllProjectIdeas();
+                }
+
+                else {
+
+                    emptyView.setVisibility(View.VISIBLE);
+                    emptyView.setText("No Internet Connection !!");
+                    emptyView.setSingleLine();
+                    rvProjectList.setVisibility(View.GONE);
+                }
+
 
 
     }

@@ -20,10 +20,12 @@
 
     <TextView
         android:id="@+id/textView_Empty"
-        android:layout_width="133dp"
+        android:layout_width="match_parent"
         android:layout_height="57dp"
         android:gravity="center"
         android:text="@string/view_ideas"
+        android:textColor="#390505"
+        android:textStyle="bold"
         android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
