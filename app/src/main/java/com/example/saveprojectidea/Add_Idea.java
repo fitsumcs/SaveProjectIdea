@@ -22,9 +22,6 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-
 
 
 public class Add_Idea extends Fragment {
@@ -77,9 +74,8 @@ public class Add_Idea extends Fragment {
                 Utitle = title.getText().toString();
                 Udescription = description.getText().toString();
 
-                SimpleDateFormat simpleDateFormat = new SimpleDateFormat("EEE, dd MMM yyyy");
-                Calendar calendar = Calendar.getInstance();
-                String today = simpleDateFormat.format(calendar.getTime());
+
+                String today =  new DateFormater().getFormatedDate();
 
                 //get user
                 FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();

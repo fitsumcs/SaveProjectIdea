@@ -23,9 +23,7 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
 
 public class RecycleAdapter  extends RecyclerView.Adapter<RecycleAdapter.ProjectIdeaHandler> {
 
@@ -155,9 +153,8 @@ public class RecycleAdapter  extends RecyclerView.Adapter<RecycleAdapter.Project
         updateButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                SimpleDateFormat simpleDateFormat = new SimpleDateFormat("EEE, dd MMM yyyy");
-                Calendar calendar = Calendar.getInstance();
-                newdate = simpleDateFormat.format(calendar.getTime());
+
+                newdate = new DateFormater().getFormatedDate();
 
 
                 //new Data
