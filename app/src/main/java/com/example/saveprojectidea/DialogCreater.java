@@ -30,7 +30,10 @@ public class DialogCreater {
     DatabaseReference projectDatabase;
     FirebaseAuth firebaseAuth;
 
-    public  DialogCreater(Context context1)
+
+
+
+    public  DialogCreater( Context context1)
     {
 
         context = context1;
@@ -39,6 +42,9 @@ public class DialogCreater {
         //get user
         firebaseUser = firebaseAuth.getCurrentUser();
         userId = firebaseUser.getUid();
+
+
+
 
     }
 
@@ -71,6 +77,7 @@ public class DialogCreater {
                         if(task.isSuccessful())
                         {
                             Toast.makeText(context,"Successfully Deleted!!!",Toast.LENGTH_SHORT).show();
+
                         }
 
                     }
@@ -90,6 +97,8 @@ public class DialogCreater {
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialog.setContentView(R.layout.edit_dialog_layout);
         dialog.show();
+
+
 
         EditText editTitle = (EditText)dialog.findViewById(R.id.editTextUpdateTitle);
         EditText editDescription = (EditText)dialog.findViewById(R.id.editTextUpdateDescription);
@@ -127,6 +136,8 @@ public class DialogCreater {
                         if(task.isSuccessful())
                         {
                             Toast.makeText(context,"Successfully Updated!!!",Toast.LENGTH_SHORT).show();
+
+
                         }
 
                     }

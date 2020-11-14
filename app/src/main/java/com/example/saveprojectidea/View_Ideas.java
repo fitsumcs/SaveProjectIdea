@@ -37,10 +37,9 @@ public class View_Ideas extends Fragment   {
 
     RecyclerView  rvProjectList ;
 
+    RecycleAdapter recycleAdapter;
+
     TextView emptyView;
-
-
-
 
 
 
@@ -48,7 +47,6 @@ public class View_Ideas extends Fragment   {
     public View_Ideas() {
         // Required empty public constructor
     }
-
 
 
     @Override
@@ -80,11 +78,8 @@ public class View_Ideas extends Fragment   {
         rvProjectList.setLayoutManager(new LinearLayoutManager(getContext()));
 
 
-
-
         //call
         readAllProjectIdeas();
-
 
 
     }
@@ -128,9 +123,9 @@ public class View_Ideas extends Fragment   {
 
                 }
 
-                RecycleAdapter recycleAdapter =  new RecycleAdapter(getContext(),project_Ideas);
+                recycleAdapter =  new RecycleAdapter(getContext(),project_Ideas);
 
-                recycleAdapter.notifyDataSetChanged();
+
 
                 rvProjectList.setHasFixedSize(true);
                 rvProjectList.setAdapter(recycleAdapter);
@@ -155,6 +150,5 @@ public class View_Ideas extends Fragment   {
 
 
     }
-
 
 }

@@ -73,13 +73,15 @@ public class RecycleAdapter  extends RecyclerView.Adapter<RecycleAdapter.Project
 
                 new DialogCreater(context).displayEditDialog(ideaOfProject);
 
+
             }
         });
 
         holder.im_delete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                new DialogCreater(context).displayDeleteDialog(ideaOfProject);
+                new DialogCreater(context ).displayDeleteDialog(ideaOfProject);
+
             }
         });
     }
