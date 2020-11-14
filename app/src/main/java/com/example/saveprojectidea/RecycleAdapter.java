@@ -1,9 +1,11 @@
 package com.example.saveprojectidea;
 
+import android.app.Dialog;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -47,6 +49,29 @@ public class RecycleAdapter  extends RecyclerView.Adapter<RecycleAdapter.Project
         holder.tv_title.setText(title);
         holder.tv_description.setText(description);
         holder.tv_date.setText(regestiredDate);
+
+        //edit image
+        holder.im_edit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                displayEditDialog();
+
+            }
+        });
+    }
+
+    private void displayEditDialog() {
+
+        Dialog dialog = new Dialog(context);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setContentView(R.layout.edit_dialog_layout);
+        dialog.show();
+
+
+
+
+
     }
 
     @Override

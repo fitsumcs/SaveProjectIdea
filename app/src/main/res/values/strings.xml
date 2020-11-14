@@ -15,6 +15,7 @@
     <string name="view_ideas">Record Your Ideas!!</string>
     <string name="description">Description</string>
     <string name="save_project_idea">Save Project Idea</string>
+    <string name="update_project_idea">Update Project Idea</string>
     <string name="project_title">Project Title</string>
     <string name="profile">Profile</string>
     <string name="add_idea">Add Idea</string>
