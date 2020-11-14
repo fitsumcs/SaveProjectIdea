@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -40,6 +41,7 @@ public class View_Ideas extends Fragment   {
     RecycleAdapter recycleAdapter;
 
     TextView emptyView;
+    ImageView emptyImageView;
 
 
 
@@ -72,6 +74,8 @@ public class View_Ideas extends Fragment   {
         projectDatabase = FirebaseDatabase.getInstance().getReference("Projects");
 
         emptyView = (TextView)view.findViewById(R.id.textView_Empty);
+        emptyImageView = (ImageView)view.findViewById(R.id.imageView_NoWifi);
+
 
         rvProjectList = (RecyclerView) view.findViewById(R.id.rvProjectIdeasList);
 
@@ -89,6 +93,7 @@ public class View_Ideas extends Fragment   {
                     emptyView.setVisibility(View.VISIBLE);
                     emptyView.setText("No Internet Connection !!");
                     emptyView.setSingleLine();
+                    emptyImageView.setVisibility(View.VISIBLE);
                     rvProjectList.setVisibility(View.GONE);
                 }
 

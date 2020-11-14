@@ -9,6 +9,8 @@
 
     <!-- TODO: Update blank fragment layout -->
 
+
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvProjectIdeasList"
         android:layout_width="0dp"
@@ -16,7 +18,23 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent" >
+
+    </androidx.recyclerview.widget.RecyclerView>
+
+    <ImageView
+        android:id="@+id/imageView_NoWifi"
+        android:layout_width="70dp"
+        android:layout_height="80dp"
+        android:layout_marginBottom="80dp"
+        android:gravity="center"
+        android:visibility="gone"
+        android:src="@drawable/ic_wifi"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        />
 
     <TextView
         android:id="@+id/textView_Empty"

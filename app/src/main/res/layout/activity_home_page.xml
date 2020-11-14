@@ -20,7 +20,7 @@
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         tools:layout_editor_absoluteX="146dp"
-        android:padding="12dp"
+            android:padding="12dp"
         app:menu="@menu/bottom_menu"
         />
 </androidx.constraintlayout.widget.ConstraintLayout>
