@@ -43,6 +43,7 @@ public class DialogCreater {
     }
 
 
+    //Delete Dialog
     public void displayDeleteDialog(ProjectIdeas projectIdeasItem) {
         Dialog dialog = new Dialog(context);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -80,7 +81,7 @@ public class DialogCreater {
             }
         });
     }
-
+  //Edit Dialog
     public void displayEditDialog(ProjectIdeas projectIdeasItem) {
 
 
