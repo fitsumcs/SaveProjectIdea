@@ -90,16 +90,47 @@ public class RecycleAdapter  extends RecyclerView.Adapter<RecycleAdapter.Project
         holder.im_delete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                displayDeleteDialog();
+                displayDeleteDialog(ideaOfProject);
             }
         });
     }
 
-    private void displayDeleteDialog() {
+    private void displayDeleteDialog(ProjectIdeas projectIdeasItem) {
         Dialog dialog = new Dialog(context);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialog.setContentView(R.layout.delete_dialog_layout);
         dialog.show();
+
+        //view
+        TextView noView = (TextView) dialog.findViewById(R.id.textView_No);
+        TextView yesView = (TextView) dialog.findViewById(R.id.textView_Yes);
+
+        noView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialog.dismiss();
+            }
+        });
+
+        yesView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                projectDatabase.child(userId).child(projectIdeasItem.getProjectId()).removeValue().addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+
+                        if(task.isSuccessful())
+                        {
+                            Toast.makeText(context,"Successfully Deleted!!!",Toast.LENGTH_SHORT).show();
+                        }
+
+                    }
+                });
+
+
+                dialog.dismiss();
+            }
+        });
     }
 
     private void displayEditDialog(ProjectIdeas projectIdeasItem) {
