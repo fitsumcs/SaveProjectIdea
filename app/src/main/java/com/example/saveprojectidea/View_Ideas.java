@@ -16,15 +16,9 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
-import java.util.Collections;
 
 
 public class View_Ideas extends Fragment   {
@@ -42,14 +36,12 @@ public class View_Ideas extends Fragment   {
 
     TextView emptyView;
     ImageView emptyImageView;
-
-
+    DBOperation dbOperation;
 
 
     public View_Ideas() {
         // Required empty public constructor
     }
-
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -68,10 +60,7 @@ public class View_Ideas extends Fragment   {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        progressDialog = new ProgressDialog(getContext());
-
-        firebaseAuth = FirebaseAuth.getInstance();
-        projectDatabase = FirebaseDatabase.getInstance().getReference("Projects");
+        dbOperation = (DBOperation)getContext();
 
         emptyView = (TextView)view.findViewById(R.id.textView_Empty);
         emptyImageView = (ImageView)view.findViewById(R.id.imageView_NoWifi);
@@ -85,7 +74,7 @@ public class View_Ideas extends Fragment   {
                 if((new ChekNetwork().isNetworkAvailable(getContext())))
                 {
                     //call
-                    readAllProjectIdeas();
+                    dbOperation.readAllProjectIdeas(getContext(),project_Ideas,rvProjectList,emptyView);
                 }
 
                 else {
@@ -96,8 +85,6 @@ public class View_Ideas extends Fragment   {
                     emptyImageView.setVisibility(View.VISIBLE);
                     rvProjectList.setVisibility(View.GONE);
                 }
-
-
 
     }
 
@@ -113,59 +100,6 @@ public class View_Ideas extends Fragment   {
         super.onDetach();
     }
 
-    public void readAllProjectIdeas()
-    {
 
-        progressDialog.setMessage("Loading Data ...");
-        progressDialog.show();
-
-        //get user
-        FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
-        String userId = firebaseUser.getUid();
-
-        project_Ideas.clear();;
-
-        projectDatabase.child(userId).addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-
-                progressDialog.dismiss();
-
-                for (DataSnapshot snapshot :dataSnapshot.getChildren()) {
-
-                    ProjectIdeas projectIdeasModel = snapshot.getValue(ProjectIdeas.class);
-
-                    project_Ideas.add(projectIdeasModel);
-                    Collections.reverse(project_Ideas);
-
-                }
-
-                recycleAdapter =  new RecycleAdapter(getContext(),project_Ideas);
-
-
-
-                rvProjectList.setHasFixedSize(true);
-                rvProjectList.setAdapter(recycleAdapter);
-
-                if(project_Ideas.isEmpty())
-                {
-                    emptyView.setVisibility(View.VISIBLE);
-                    rvProjectList.setVisibility(View.GONE);
-                }
-
-
-
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });
-
-
-
-
-    }
 
 }
