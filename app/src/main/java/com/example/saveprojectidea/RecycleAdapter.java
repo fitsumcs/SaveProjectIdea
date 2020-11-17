@@ -28,6 +28,8 @@ public class RecycleAdapter  extends RecyclerView.Adapter<RecycleAdapter.Project
     DatabaseReference projectDatabase;
     FirebaseAuth firebaseAuth;
 
+    DBOperation dbOperation;
+
     public RecycleAdapter(Context con, ArrayList<ProjectIdeas> projectIdeas)
     {
 
@@ -38,6 +40,7 @@ public class RecycleAdapter  extends RecyclerView.Adapter<RecycleAdapter.Project
         //get user
         firebaseUser = firebaseAuth.getCurrentUser();
         userId = firebaseUser.getUid();
+        dbOperation = (DBOperation)context;
 
 
 
@@ -72,6 +75,7 @@ public class RecycleAdapter  extends RecyclerView.Adapter<RecycleAdapter.Project
             public void onClick(View view) {
 
                 new DialogCreater(context).displayEditDialog(ideaOfProject);
+
 
 
             }
